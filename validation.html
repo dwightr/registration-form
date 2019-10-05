@@ -43,5 +43,32 @@
             </label>
         </div>
     </form>
+    <script>
+        const fields = document.querySelectorAll('input');
+
+        for (i = 0; i < fields.length; i++) {
+            fields[i].addEventListener('focus', (event) => {
+                event.target.style.background = 'pink'; 
+                //event.target.parentElement.classList.add('test');
+                if(event.target.value.length <= 0) {
+                    console.log(event.target.value.length)
+                    event.target.parentElement.children[1].textContent = 'Please enter something!';
+                } else {
+                    event.target.parentElement.children[1].textContent = 'OK!';
+                }
+            });
+
+            fields[i].addEventListener('blur', (event) => {
+                event.target.style.background = ''; 
+                //event.target.parentElement.classList.remove('test'); 
+                if(event.target.value.length <= 0) {
+                    console.log(event.target.value.length)
+                    event.target.parentElement.children[1].textContent = 'Please enter something!';
+                } else {
+                    event.target.parentElement.children[1].textContent = 'OK!';
+                }
+            });
+        }
+    </script>
 </body>
 </html>
